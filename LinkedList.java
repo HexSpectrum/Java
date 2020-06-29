@@ -1,7 +1,7 @@
 import java.util.NoSuchElementException;
 
 /**
- * @author Hex. implement a linked list
+ * @author Hex. implement a linked list and a few of its methods
  **/
 
 public class LinkedList {
@@ -10,16 +10,52 @@ public class LinkedList {
     Node last;
 
     /**
-     * adds a node to the list
+     * adds a node to the end of the list
+     * 
+     * @param value - node value
      */
     public void add(int value) {
         Node nNode = new Node(value);
+        // add to the end of the list
+        // [1->2->3->4->5 -> x]
+        if (first == null) {
+            first = last = nNode;
+        } else {
+            last.next = nNode;
+            last = last.next;
+        }
+    }
+
+    /**
+     * checks if the list contains a specific node value
+     * 
+     * @param value - value of the node
+     */
+    public boolean contains(int value) {
+        var current = first;
+        while (current != null) {
+            if (current.data == value) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    /**
+     * adds a node to the end of the list
+     * 
+     * @param value - value of the node
+     */
+    public void addLast(int value) {
+        Node nNode = new Node(value);
+        // [c->1->2->3->4->x]
 
         if (first == null) {
             first = last = nNode;
         } else {
-            nNode.next = first;
-            first = nNode;
+            last.next = nNode;
+            last = last.next;
         }
     }
 
@@ -109,10 +145,14 @@ public class LinkedList {
 
     public static void main(String[] args) {
         LinkedList obj = new LinkedList();
-        obj.add(5);
-        obj.add(10);
-        obj.add(15);
-        obj.add(20);
+        obj.add(1);
+        obj.add(2);
+        obj.add(4);
+        obj.add(8);
+        obj.add(16);
+
         obj.print();
+        System.out.println(obj.contains(16));
+
     }
 }

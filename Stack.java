@@ -1,7 +1,8 @@
 import java.util.NoSuchElementException;
 
 /**
- * @author Hex stack implementation
+ * @author Hex 
+ * stack implementation using linked list concept
  **/
 
 public class Stack {
